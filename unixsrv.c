@@ -39,9 +39,11 @@ struct sockaddr* build_address(const char* name,socklen_t *al){
 	size_t siz = strlen(name)+1;
 	size_t asiz = sizeof(stun)-sizeof(stun.sun_path)+siz;
 	struct sockaddr_un *un;
-	if(asiz>sizeof(stun)) un = malloc(asiz);
-	else {
+	if(asiz>sizeof(stun)) {
 		*al = asiz;
+		un = malloc(asiz);
+	} else {
+		*al = sizeof(stun);
 		un = &stun;
 	}
 	un->sun_family = AF_UNIX;
