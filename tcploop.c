@@ -29,6 +29,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/un.h>
 
 void sig_exit()
 {
@@ -48,6 +49,7 @@ int main(int argc,const char* const * argv){
 	union {
 		struct sockaddr_in i4;
 		struct sockaddr_in6 i6;
+		struct sockaddr_un un;
 	} au;
 	int sock;
 	int client;
