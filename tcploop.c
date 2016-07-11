@@ -66,7 +66,8 @@ int main(int argc,const char* const * argv){
 		if(client<0) { usleep(100); continue; }
 		pid = fork();
 		if(pid==0){
-			dup2(1,2);		fail("dup2 1,2");
+			errno = 0;
+			dup2(1,2);      fail("dup2 1,2");
 			dup2(client,0); fail("dup2 client,0");
 			dup2(client,1); fail("dup2 client,1");
 			close(client);  fail("close");
