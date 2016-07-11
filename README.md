@@ -37,4 +37,13 @@ is stored in the Environment variable `SOCKET`
 * $IP : An IP address. If the address family is IPv6, and $IP is '.', an IN_ANY equivalent is being used.
 * $PORT : The port number.
 
+### 'unixsrv'
+
+```
+unixsrv $SOCKET_FILE cmd args...
+```
+
+`unixsrv` creates a socket, binds it, calls `listen` and execs the next command. The File-descriptor number of the socket
+is stored in the Environment variable `SOCKET`
+
 
