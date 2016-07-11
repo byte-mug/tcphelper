@@ -42,6 +42,7 @@ struct sockaddr* build_address(const char* name,socklen_t *al){
 	if(asiz>sizeof(stun)) {
 		*al = asiz;
 		un = malloc(asiz);
+		if(!un)return NULL;
 	} else {
 		*al = sizeof(stun);
 		un = &stun;
@@ -59,6 +60,7 @@ int main(int argc,const char* const * argv){
 	uid_t uid;
 	if(argc<=2){printf("argc<=2 %d \n",argc);return 1;}
 	struct sockaddr* addr = build_address(argv[1],&al);
+	if(!addr) { perror("build_address"); return 1; }
 
 	server = socket(AF_UNIX, SOCK_STREAM, 0);
 	if(server<0){ perror("socket"); return 1; }
