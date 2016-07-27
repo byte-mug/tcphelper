@@ -1,5 +1,5 @@
 # tcphelper
-TCP/IP server Helper for Linux
+TCP/IP server Helper for UNIX/Linux
 
 ## Build 
 ```
