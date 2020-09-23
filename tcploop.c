@@ -71,6 +71,7 @@ int main(int argc,const char* const * argv){
 			dup2(client,0); fail("dup2 client,0");
 			dup2(client,1); fail("dup2 client,1");
 			close(client);  fail("close");
+			close(sock);    fail("close");
 			switch(au.i4.sin_family){
 			case AF_INET:
 				inet_ntop(AF_INET, &(au.i4.sin_addr), NAME, sizeof(NAME)-1);
